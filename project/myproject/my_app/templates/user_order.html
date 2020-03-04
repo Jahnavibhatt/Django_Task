@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+
+<table style="width:70%">
+    <tr>
+        <th>order no</th>
+        <th>username</th>
+        <th>address</th>
+        <th>mobile_no</th>
+        <th>Item_Name</th>
+        <th>Item_Price</th>
+        <th>Total</th>
+
+    </tr>
+    <tr>
+        <td>{{orders.id}}</td>
+        <td>{{orders.user.username}}</td>
+        <td>{{users.address}}</td>
+        <td>{{users.phone_number}}</td>
+        <td>{% for itemName in menu %}
+            <p>{{itemName}}</p>
+            {% endfor %}
+        </td>
+        <td> {% for itemprice in menus %}
+             <p>{{itemprice}}</p>
+             {% endfor %}
+        </td>
+        <td>{{orders.total}}</td>
+    </tr>
+
+
+</table>
+
+{% endblock %}

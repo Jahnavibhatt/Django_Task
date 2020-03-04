@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+ {% block content %}
+
+  <h2 class="text-center">Login</h2>
+    <div class="col-md-6 offset-md-3">
+      <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+
+          <input type="text" class="form-control" placeholder="Enter Username" name="username" autocomplete = "off"><br>
+
+        </div>
+        <div class="form-group">
+
+          <input type="password" class="form-control" placeholder="Enter Password" name="password">
+
+        </div>
+
+        <div class="text-center">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        <div class="text-right">
+          <b><a href="{% url 'forgetPassword' %}" class="ForgetPwd" value="Login">Forget Password?</a><b>
+        </div>
+
+   </form>
+  </div>
+
+{% endblock %}
+

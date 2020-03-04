@@ -1,0 +1,39 @@
+ function getselectedvalue(v,i)
+                    {
+                           var p = "price"+i.slice(8)
+                           var t = "total"+i.slice(8)
+                           console.log(v)
+                           console.log(i)
+                           console.log(p)
+                           var PriceVar = document.getElementById(p);
+                           var itemTot = document.getElementById(t);
+                           var f = PriceVar.innerHTML;
+                           console.log(v*f);
+                           temp = v*f;
+                           itemTot.innerHTML = temp;
+                           total = total + temp;
+                           var FTot = document.getElementById("finaltot");
+                           FTot.innerHTML = total;
+                           console.log(total);
+                    }
+
+  function getsvalue(){
+        var total = 0;
+        for(i=1;i<6;i++)
+        {
+            var q = "quantity"+i
+            var p = "price"+i
+            var t = "total"+i
+            var PriceVar = document.getElementById(p);
+            var itemTot = document.getElementById(t);
+            var QuantVar = document.getElementById(q);
+
+            temp = PriceVar.innerHTML*QuantVar.value;
+            itemTot.innerHTML = PriceVar.innerHTML*QuantVar.value;
+            console.log(itemTot.innerHTML);
+            total = total+ temp;
+            var FTot = document.getElementById("finaltot");
+            FTot.innerHTML = total;
+            console.log(total);
+        }
+    }

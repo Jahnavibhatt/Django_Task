@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div id="pdf">
+
+
+  <h1>This is your home page </h1>
+  <a href="{% url 'menu/' %}" target="_blank">Click here to download menu</a><br>
+  <div>
+          {% if user.is_authenticated %}
+                 <p> your id is:{{ user.id }} </p>
+          {% endif %}
+  </div>
+  </div>
+      <table id="home" style="width:50%">
+                <col align="center">
+                <tr>
+                    <th>Image</th>
+                    <th>Item Name</th>
+                    <th>No of Item</th>
+                    <th>Quantity</th>
+                    <th>Price per Items</th>
+                    <th>Total per Items</th>
+                </tr>
+                {% for m in menu %}
+                        <tr>
+                            <td align="center"><img src="{{m.image.url}}" style="height:70px; width:70px"/></td>
+                            <td align=center id="{{ m.id }}" class="item_id"> {{m.item_name}}</td>
+                            <td align=center>
+                                <select id="quantity_{{forloop.counter}}" class="quan">
+                                     <option value="0">0</option>
+                                     <option value="1">1</option>
+                                     <option value="2">2</option>
+                                     <option value="3">3</option>
+                                     <option value="4">4</option>
+                                     <option value="5">5</option>
+                                </select>
+                            </td>
+                            <td id="qun{{forloop.counter}}" class="qulity" align="center">0</td>
+                            <td id="price{{forloop.counter}}" align="center">{{m.price}}</td>
+                            <td id="total{{forloop.counter}}" align="center">0</td>
+                        </tr>
+                {% endfor %}
+
+
+                  </table>
+                  <table style="margin-top:20px;">
+                            <tbody>
+                                <tr style="margin-top:100px;"> <th class="total">Total :</th> <th id="finaltot" align="center">0</th></tr>
+                            </tbody>
+                  </table>
+                  <table id="order" style="margin-top:20px;">
+                            <tbody>
+                                <tr style="margin-top:100px;">
+                                    <button type="button" id="{{ user.id }}" data-url="{% url 'order_placed/'%}" class="order">Order</button>
+                                </tr>
+
+                            </tbody>
+                  </table>
+       </table>
+<div id="hello">
+<p></p>
+</div>
+{% endblock %}
+
+

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<!--    <div>-->
+<!--&lt;!&ndash;        {% if user.is_superuser%}&ndash;&gt;-->
+<!--&lt;!&ndash;            <p>{{user.first_name}}</p>&ndash;&gt;-->
+<!--&lt;!&ndash;        {% endif %}&ndash;&gt;-->
+<!--    </div>-->
+    <table style="width:40%">
+        <col align="center">
+                <tr>
+                    <th>Order no</th>
+                    <th>Total</th>
+                    <th>view user details</th>
+                </tr>
+                {% for order in orders %}
+                <tr>
+
+                    <td id="id{{ order.user }}" class="order_id" align=left>{{order.id}}</td>
+                    <td id="total{{forloop.counter}}"class="order_total"align=left>{{ order.total}}</td>
+
+
+                    <td class="order_view">
+                         <a href="{% url 'user_details' id=order.id %}" >
+                            <button id="bt{{forloop.counter}}"class="view" type="button">view</button>
+
+                        </a>
+
+                    </td>
+                </tr>
+               {% endfor %}
+    </table>
+
+{% endblock %}
+
+
